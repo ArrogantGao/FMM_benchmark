@@ -16,7 +16,7 @@ end
 function main(args::Vector{String})
     filename = args[1]
     df = CSV.write(filename, DataFrame(ns = Int[], time = Float64[]))
-    for n in [100, 200, 400, 800, 1600, 3200, 6400, 12800, 25600, 51200, 102400, 204800, 409600]
+    for n in [100, 200, 400, 800, 1600, 3200, 6400, 12800, 25600, 51200, 102400, 204800, 409600, 409600 * 2, 409600 * 4]
         time = benchmark_lfmm3d(n)
         CSV.write(df, DataFrame(ns = n, time = time), append = true)
     end
